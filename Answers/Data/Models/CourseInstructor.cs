@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace Answers.Data.Models
 {
-    internal class CourseInstructor
+    public class CourseInstructor
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Inst_ID { get; set; }
+        public Instructor Instructor { get; set; }
+
         public int Course_ID { get; set; }
+        public Course Course { get; set; }
+
         public string Evaluate { get; set; }
     }
 }

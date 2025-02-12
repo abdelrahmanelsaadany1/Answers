@@ -1,4 +1,4 @@
-﻿using FluentApis;
+﻿using  demo.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

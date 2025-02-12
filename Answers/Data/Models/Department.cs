@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Answers.Data.Models
 {
-    internal class Department
+    public class Department
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,6 +18,8 @@ namespace Answers.Data.Models
         public string Name { get; set; }
 
         public int Ins_ID { get; set; }
-        public DateTime HiringDate { get; set; }
+        public Instructor Instructor { get; set; }
+
+        public ICollection<Student> Students { get; set; } = new List<Student>();
     }
 }

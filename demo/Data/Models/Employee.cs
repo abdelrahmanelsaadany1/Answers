@@ -11,18 +11,19 @@ namespace demo.Data.Models
 {
     public class Employee
     {
+        #region EmmployeeProperities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Code { get; set; }
-        [Column(TypeName ="varchar")]
-        [StringLength(50,MinimumLength =10)]
+        [Column(TypeName = "varchar")]
+        [StringLength(50, MinimumLength = 10)]
         public string? Name { get; set; }
         [Column(TypeName = "decimal(12,2)")]
 
         public double Salary { get; set; }
-        [Range(20,60)]
-        [AllowedValues(18,19,20,21)]
-        [DeniedValues(10,15)]
+        [Range(20, 60)]
+        [AllowedValues(18, 19, 20, 21)]
+        [DeniedValues(10, 15)]
 
         public int? Age { get; set; }
         [EmailAddress]
@@ -32,5 +33,17 @@ namespace demo.Data.Models
         [DataType(DataType.Password)]
         public string? Password { get; set; }
 
+        #endregion
+        #region NavigationalProperities
+        [ForeignKey("Department")]
+        public int? DepartmentDeptId { get; set; }
+        [InverseProperty(nameof(Models.Department.Employees))]
+        public Department Department { get; set; }
+        #endregion
+        #region Manage
+      
+        [InverseProperty(nameof(Models.Department.Manager))]
+        public Department ManageDepartment { get; set; }
+        #endregion
     }
 }

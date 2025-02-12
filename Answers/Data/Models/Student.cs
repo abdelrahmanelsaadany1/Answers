@@ -8,22 +8,26 @@ using System.Threading.Tasks;
 
 namespace Answers.Data.Models
 {
-    internal class Student
+    public class Student
     {
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required, MaxLength(50)]
+        [Required, MaxLength(100)]
         public string FName { get; set; }
 
-        [Required, MaxLength(50)]
+        [Required, MaxLength(100)]
         public string LName { get; set; }
 
-        [MaxLength(200)]
         public string Address { get; set; }
 
         public int Age { get; set; }
+
         public int Dep_Id { get; set; }
+        public Department Department { get; set; }
+
+        public ICollection<StudCourse> StudCourses { get; set; } = new List<StudCourse>();
     }
 }

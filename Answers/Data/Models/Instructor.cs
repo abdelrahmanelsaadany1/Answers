@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Answers.Data.Models
 {
-    internal class Instructor
+    public class Instructor
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,10 +19,14 @@ namespace Answers.Data.Models
 
         public decimal Salary { get; set; }
 
-        [MaxLength(200)]
         public string Address { get; set; }
 
-        public decimal HourRateBonus { get; set; }
-        public int Dept_ID { get; set; }
+        public decimal HourRate { get; set; }
+
+        public decimal Bouns { get; set; }
+
+        public Department Department { get; set; }
+
+        public ICollection<CourseInstructor> CourseInstructors { get; set; } = new List<CourseInstructor>();
     }
 }

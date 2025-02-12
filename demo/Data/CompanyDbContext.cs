@@ -1,6 +1,6 @@
 ﻿using demo.Data.Configurations;
 using demo.Data.Models;
-using FluentApis;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,11 +22,13 @@ namespace demo.Data
             //modelBuilder.ApplyConfiguration<Employee>(new EmployeeConfiguration());
             //modelBuilder.ApplyConfiguration<Department>(new DepartmentConfiguration());
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
+            modelBuilder.Entity<StudentCourse>().HasKey(sc => new { sc.StudentId, sc.CourseId });
 
         }
         public DbSet<Models.Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }
 
