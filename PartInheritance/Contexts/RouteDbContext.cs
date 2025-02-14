@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PartInheritance.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,20 @@ namespace PartInheritance.Contexts
         {
             optionsBuilder.UseSqlServer("Server=.;Database=RouteG02;Trusted_Connection=True;TrustServerCertificate=True");
         }
-       
-        public DbSet<Entities.FullTimeEmployee> FullTimeEmployees { get; set; }
-        public DbSet<Entities.PartTime> PartTimes { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+
+        #region Tpcc
+        //public DbSet<Entities.FullTimeEmployee> FullTimeEmployees { get; set; }
+        //public DbSet<Entities.PartTime> PartTimes { get; set; }
+        #endregion
+        #region Tph
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Entities.FullTimeEmployee>()
+                .HasBaseType<Employee>();
+            modelBuilder.Entity<Entities.PartTime>()
+                .HasBaseType<Employee>();
+        }
+        #endregion
     }
 }

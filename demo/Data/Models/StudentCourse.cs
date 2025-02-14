@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace demo.Data.Models
 {
-    internal class StudentCourse
+    public class StudentCourse
     {
         [ForeignKey("Student")]
         public int StudentId { get; set; }

@@ -10,8 +10,8 @@ namespace demo.Data.Models
     public class Department
     {
         public int DeptId { get; set; }
-        public string Name { get; set; }
-        public DateOnly CreationDate { get; set; }
+        public string? Name { get; set; }
+        public DateOnly? CreationDate { get; set; }
         [InverseProperty(nameof(Models.Employee.Department))]
       public ICollection<Employee> Employees { get; set; }=new HashSet<Employee>();
         #region Manage
